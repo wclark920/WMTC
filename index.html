@@ -1,15 +1,16 @@
 <!-- landing page (w/pyrosaur game) --> 
 <html>
-<head>
-	<title>WMTC Development</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div id="header">
-		<img src="img/wmtc_logo01.png"> <!-- logo img -->
-	</div>
-	<div id="banner"> 
-		<img src="img/trex_stand.png"> <!-- t-rex img -->
-	</div>
-</body>
+	<head>
+		<title>WMTC Development</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="gameScript.js"></script>
+	</head>
+	<body onload="init();">
+		<div id="header">
+			<img src="img/wmtc_logo01.png"> <!-- logo img -->
+		</div>
+		<div id="banner"> 
+			<img id="dino" src="img/trex_stand.png"> <!-- t-rex img -->
+		</div>
+	</body>
 </html>

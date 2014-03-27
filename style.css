@@ -1,8 +1,18 @@
 /* stylesheet for WMTC landing page */
 
 body{
-	background: url('img/landing_bg_01.png') no-repeat;
+	background: url('img/landing_bg_01.png') repeat-x;
 }
+
+/* http://stackoverflow.com/questions/1309055/cross-browser-way-to-flip-html-image-via-javascript-css	*/
+	.flip{
+		-moz-transform: scaleX(-1);
+		-webkit-transform: scaleX(-1);
+		-o-transform: scaleX(-1);
+		transform: scaleX(-1);
+		-ms-filter: fliph; /*IE*/
+		filter: fliph; /*IE*/
+	}
 
 #header img{
 	height: 200px;
@@ -13,9 +23,15 @@ body{
 	margin-left: auto;
 }
 
+#banner{
+	height: 100px;
+	/*width: 100%;*/
+	margin-top: 235px;
+	/*background-color: blue;*/
+}
 #banner img{
 	display: block;
 	height: 100px;
 	width: auto;
-	margin-top: 235px;
+	
 }
