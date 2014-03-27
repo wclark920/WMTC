@@ -1,7 +1,7 @@
 /* stylesheet for WMTC landing page */
 
 body{
-	background: url('img/landing_bg_01.png');
+	background: url('img/landing_bg_01.png') no-repeat;
 }
 
 #header img{
