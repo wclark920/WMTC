@@ -1,2 +1,6 @@
-/* this is the stylesheet for WMTC */
+/* stylesheet for WMTC landing page */
 
+body{
+	background: url('img/landing_bg_01.png');
+	background-size: 100%;
+}
