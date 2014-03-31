@@ -25,7 +25,7 @@ body{
 
 #banner{
 	height: 100px;
-	/*width: 100%;*/
+	width: 100%;
 	margin-top: 235px;
 	/*background-color: blue;*/
 }
@@ -33,5 +33,4 @@ body{
 	display: block;
 	height: 100px;
 	width: auto;
-	
 }

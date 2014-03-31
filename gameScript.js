@@ -2,7 +2,7 @@
 
 var dino;
 var gameTimer;
-var zombieTimer;
+var createZombieTimer;
 var speed = 1;
 
 function init(){
@@ -10,7 +10,7 @@ function init(){
 	dino.style.marginLeft = "400px";
 
 	gameTimer = window.setInterval(gameLoop, 15);
-	zombieTimer = window.setInterval(zombies, 3000);
+	createZombieTimer = window.setInterval(createZombie, 1000);
 }
 
 function gameLoop(){
@@ -39,12 +39,21 @@ function gameLoop(){
 	});
 }
 
-function zombies(){
-	var makeZombie = document.createElement("IMG").src = "zombie_walk_right.gif";
-	var zr = document.getElementById("banner").innerHTML = makeZombie;
-	var zombiePosition = parseInt(zr.style.marginLeft);
-	zombie.style.marginLeft = (zombiePosition + speed) + "px";
+function createZombie(){
+	var imgElem = document.createElement("img");
+	imgElem.src = "img/zombie_walk_right.gif";
+	var newZom = document.getElementById('banner').appendChild(imgElem);
+	newZom.style.height = "40px";
+	newZom.style.width = "auto";
+	newZom.style.display = "block";
+
+	var zomPos = parseInt(newZom.style.marginLeft);
+
+	if (zomPos > 0) {
+		newZom.style.marginLeft = (zomPos + 50) + "px";
+	}
 }
+
 
 function stopLoop(){
 	window.clearInterval(gameTimer);
