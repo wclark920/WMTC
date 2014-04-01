@@ -9,8 +9,9 @@ function init(){
 	dino = document.getElementById('dino');
 	dino.style.marginLeft = "400px";
 
-	gameTimer = window.setInterval(gameLoop, 15);
-	createZombieTimer = window.setInterval(createZombie, 1000);
+	gameTimer = window.setInterval(gameLoop(), 15);
+	createZombieTimer = window.setInterval(createZombie(), 1000);
+	makeZombieTimer = window.setInterval(moveZombie(), 1000);
 }
 
 function gameLoop(){
@@ -39,23 +40,43 @@ function gameLoop(){
 	});
 }
 
+
 function createZombie(){
 	var imgElem = document.createElement("img");
 	imgElem.src = "img/zombie_walk_right.gif";
+	imgElem.setAttribute("id", "frontZom");
 	var newZom = document.getElementById('banner').appendChild(imgElem);
+	newZom.style.marginLeft = "50px";
 	newZom.style.height = "40px";
 	newZom.style.width = "auto";
 	newZom.style.display = "block";
+}
 
-	var zomPos = parseInt(newZom.style.marginLeft);
 
-	if (zomPos > 0) {
-		newZom.style.marginLeft = (zomPos + 50) + "px";
-	}
+function moveZombie(){
+	var newZombie = document.getElementById('frontZom');
+	newZombie.style.marginLeft = "0px";
+	var zomPos = parseInt(newZombie.style.marginLeft);
+	newZombie.style.marginLeft = (zomPos + speed) + "px";
+	console.log('new zombie');
 }
 
 
 function stopLoop(){
 	window.clearInterval(gameTimer);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
