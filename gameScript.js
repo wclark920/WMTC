@@ -3,7 +3,7 @@
 var dino;
 var gameTimer;
 var createZombieTimer;
-var speed = 1;
+var speed = 20;
 
 function init(){
 	dino = document.getElementById('dino');
@@ -50,6 +50,8 @@ function createZombie(){
 	newZom.style.height = "40px";
 	newZom.style.width = "auto";
 	newZom.style.display = "block";
+
+	moveZombie();
 }
 
 
