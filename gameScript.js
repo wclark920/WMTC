@@ -2,7 +2,9 @@
 
 var dino;
 var gameTimer;
-var createZombieTimer;
+// var createZombieTimer;
+var cloneZombieTimer;
+var timerCheck;
 var speed = 20;
 
 function init(){
@@ -10,8 +12,9 @@ function init(){
 	dino.style.marginLeft = "400px";
 
 	gameTimer = window.setInterval(gameLoop(), 15);
-	createZombieTimer = window.setInterval(createZombie(), 1000);
-	makeZombieTimer = window.setInterval(moveZombie(), 1000);
+	// createZombieTimer = window.setInterval(createZombie(), 1000);
+	cloneZombieTimer = window.setInterval(function(){cloneZombie();}, 1000);
+	// timerCheck = window.setInterval(timer(), 1000);
 }
 
 function gameLoop(){
@@ -28,12 +31,11 @@ function gameLoop(){
 			stopLoop();
 		};
 
-		//hit test
-		if (event.keyCode == 32) {
+		if (event.keyCode == 32) {  // fire
 			dino.src = "img/trex_fire02.png";
 		};
 	});
-	document.addEventListener('keyup', function(event){
+	document.addEventListener('keyup', function(event){ // turn fire off
 		if (event.keyCode == 32) {
 			dino.src = "img/trex_stand.png";
 		};
@@ -41,31 +43,48 @@ function gameLoop(){
 }
 
 
-function createZombie(){
-	var imgElem = document.createElement("img");
-	imgElem.src = "img/zombie_walk_right.gif";
-	imgElem.setAttribute("id", "frontZom");
-	var newZom = document.getElementById('banner').appendChild(imgElem);
-	newZom.style.marginLeft = "50px";
-	newZom.style.height = "40px";
-	newZom.style.width = "auto";
-	newZom.style.display = "block";
 
-	moveZombie();
-}
+// makin and movin zombies!!
 
+//var newZom;
 
-function moveZombie(){
-	var newZombie = document.getElementById('frontZom');
-	newZombie.style.marginLeft = "0px";
-	var zomPos = parseInt(newZombie.style.marginLeft);
-	newZombie.style.marginLeft = (zomPos + speed) + "px";
+// function createZombie(){     // default constructor.. 
+// 	var imgElem = document.createElement("img");
+// 	imgElem.src = "img/zombie_walk_right.gif";
+// 	imgElem.setAttribute("class", "frontZom");
+// 	newZom = document.getElementById('banner').appendChild(imgElem); // change: made this global
+// 	newZom.style.marginLeft = "50px";
+// 	newZom.style.height = "40px";
+// 	newZom.style.width = "auto";
+// 	newZom.style.display = "block";
+// }
+
+function cloneZombie(){
+	var zombieElem = document.getElementById('banner').lastChild;
+	var zombieClone = zombieElem.cloneNode(true);
+	var newZombie = document.getElementById('banner').appendChild(zombieClone);
 	console.log('new zombie');
 }
+
+// var timertimer = window.setInterval(function(){timer();}, 1000);
+
+// function timer(){
+// 	console.log('timer');
+// }
+
+
+
+// function moveZombie(){
+// 	newZom.style.marginLeft = "0px";
+// 	var zomPos = parseInt(newZombie.style.marginLeft);
+// 	newZom.style.marginLeft = (zomPos + speed) + "px";
+// }
+
 
 
 function stopLoop(){
 	window.clearInterval(gameTimer);
+	window.clearInterval(timer);
 }
 
 
