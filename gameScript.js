@@ -2,8 +2,6 @@
 
 var dino;
 var gameTimer;
-// var createZombieTimer;
-var cloneZombieTimer;
 var timerCheck;
 var speed = 20;
 
@@ -12,9 +10,7 @@ function init(){
 	dino.style.marginLeft = "400px";
 
 	gameTimer = window.setInterval(gameLoop(), 15);
-	// createZombieTimer = window.setInterval(createZombie(), 1000);
-	cloneZombieTimer = window.setInterval(function(){cloneZombie();}, 1000);
-	// timerCheck = window.setInterval(timer(), 1000);
+	cloneTimer = window.setInterval(function(){cloneZombie();}, 1000);
 }
 
 function gameLoop(){
@@ -42,57 +38,27 @@ function gameLoop(){
 	});
 }
 
-
-
-// makin and movin zombies!!
-
-//var newZom;
-
-// function createZombie(){     // default constructor.. 
-// 	var imgElem = document.createElement("img");
-// 	imgElem.src = "img/zombie_walk_right.gif";
-// 	imgElem.setAttribute("class", "frontZom");
-// 	newZom = document.getElementById('banner').appendChild(imgElem); // change: made this global
-// 	newZom.style.marginLeft = "50px";
-// 	newZom.style.height = "40px";
-// 	newZom.style.width = "auto";
-// 	newZom.style.display = "block";
-// }
-
-function cloneZombie(){
-	var zombieElem = document.getElementById('banner').lastChild;
-	var zombieClone = zombieElem.cloneNode(true);
-	var newZombie = document.getElementById('banner').appendChild(zombieClone);
-	console.log('new zombie');
-}
-
-// var timertimer = window.setInterval(function(){timer();}, 1000);
-
-// function timer(){
-// 	console.log('timer');
-// }
-
-
-
-// function moveZombie(){
-// 	newZom.style.marginLeft = "0px";
-// 	var zomPos = parseInt(newZombie.style.marginLeft);
-// 	newZom.style.marginLeft = (zomPos + speed) + "px";
-// }
-
-
-
 function stopLoop(){
 	window.clearInterval(gameTimer);
-	window.clearInterval(timer);
 }
 
+// cloning the zombie..
+function cloneZombie(){
+	var zombie = document.getElementById('zombieImg');
+	var clone = zombie.cloneNode(false); // make zombie clone
+	var cloneDiv = document.getElementById('banner');
+	newClone = cloneDiv.appendChild(clone);
+		newClone.style.height = "35px";
+		newClone.style.marginTop = "1px";
+		newClone.style.visibility = "visible";
+	moveZombie();
+}
 
-
-
-
-
-
+function moveZombie(){
+	var newZombie = document.getElementById('banner').lastChild;
+	var newZombiePos = parseInt(newZombie.style.marginLeft);
+	newZombie.style.marginLeft = (newZombiePos + 10) + "px";
+}
 
 
 

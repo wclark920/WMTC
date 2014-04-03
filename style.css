@@ -34,3 +34,10 @@ body{
 	height: 100px;
 	width: auto;
 }
+#zombieImg{
+	display: block;
+	height: 20px;
+	width: auto;
+	position: relative;
+	visibility: hidden;
+}
