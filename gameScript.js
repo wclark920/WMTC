@@ -4,13 +4,20 @@ var dino;
 var gameTimer;
 var timerCheck;
 var speed = 20;
+var newZombie;
+var newZombieTimer;
+var moveZombieTimer;
 
 function init(){
 	dino = document.getElementById('dino');
 	dino.style.marginLeft = "400px";
 
 	gameTimer = window.setInterval(gameLoop(), 15);
-	cloneTimer = window.setInterval(function(){cloneZombie();}, 1000);
+	//cloneTimer = window.setInterval(function(){cloneZombie();}, 1000);	
+
+
+	newZombieTimer = window.setInterval(function(){newZombie();}, 1000);
+	moveZombieTimer = window.setInterval(function(){moveNewZombie();}, 500);
 }
 
 function gameLoop(){
@@ -43,21 +50,34 @@ function stopLoop(){
 }
 
 // cloning the zombie..
-function cloneZombie(){
-	var zombie = document.getElementById('zombieImg');
-	var clone = zombie.cloneNode(false); // make zombie clone
-	var cloneDiv = document.getElementById('banner');
-	newClone = cloneDiv.appendChild(clone);
-		newClone.style.height = "35px";
-		newClone.style.marginTop = "1px";
-		newClone.style.visibility = "visible";
-	moveZombie();
+// function cloneZombie(){
+// 	var zombie = document.getElementById('zombieImg');
+// 	var clone = zombie.cloneNode(false); // make zombie clone
+// 	var cloneDiv = document.getElementById('banner');
+// 	newClone = cloneDiv.appendChild(clone);
+// 		newClone.style.height = "35px";
+// 		newClone.style.marginTop = "1px";
+// 		newClone.style.visibility = "visible";
+// 	moveZombie();
+// }
+
+// function moveZombie(){
+// 	var newZombie = document.getElementById('banner');
+// 	var newZom = newZombie.innerHTML('zombieImg');
+// 	var newZombiePos = parseInt(newZom.style.marginLeft);
+// 	newZom.style.marginLeft = (newZombiePos + 10) + "px";
+// }
+
+function newZombie(){
+	newZombie = document.createElement("img");
+	newZombie.setAttribute(src, "img/zombie_walk_right.gif");
+	newZombie.style.marginLeft = "10px";
+	console.log("something is happening");
 }
 
-function moveZombie(){
-	var newZombie = document.getElementById('banner').lastChild;
-	var newZombiePos = parseInt(newZombie.style.marginLeft);
-	newZombie.style.marginLeft = (newZombiePos + 10) + "px";
+function moveNewZombie(){
+	var zomPosition = parseInt(newZombie.style.marginLeft);
+	newZombie.style.marginLeft = (zomPosition + speed) + "px";
 }
 
 
